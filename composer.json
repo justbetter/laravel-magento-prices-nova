@@ -1,0 +1,41 @@
+{
+    "name": "justbetter/laravel-magento-prices-nova",
+    "description": "Nova integration for justbetter/laravel-magento-prices",
+    "type": "package",
+    "authors": [
+        {
+            "name": "Vincent Boon",
+            "email": "vincent@justbetter.nl",
+            "role": "Developer"
+        },
+        {
+            "name": "Ramon Rietdijk",
+            "email": "ramon@justbetter.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "laravel/nova": "^4.0",
+        "just-better/laravel-magento-prices": "^3.0",
+        "justbetter/nova-error-logger": "^4.0",
+        "bolechen/nova-activitylog": "^0.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JustBetter\\MagentoPricesNova\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JustBetter\\MagentoPricesNova\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
