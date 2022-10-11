@@ -5,6 +5,7 @@ namespace JustBetter\MagentoPricesNova\Nova;
 use Bolechen\NovaActivitylog\Resources\Activitylog;
 use Illuminate\Http\Request;
 use JustBetter\MagentoPrices\Models\MagentoPrice;
+use JustBetter\MagentoProducts\Models\MagentoProduct;
 use JustBetter\NovaErrorLogger\Nova\Error;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
@@ -38,6 +39,13 @@ class MagentoPrices extends Resource
             Boolean::make(__('Keep in sync'), 'sync')
                 ->help(__('Disable if this product stock should not be synced'))
                 ->sortable(),
+
+            Boolean::make(__('Exists in Magento'), function (MagentoPrice $price) {
+                $product = MagentoProduct::findBySku($price->sku);
+
+                return $product === null ? false : $product->exists_in_magento;
+            })
+                ->showOnIndex(false),
 
             Text::make(__('SKU'), 'sku')
                 ->readonly()
