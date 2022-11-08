@@ -10,6 +10,7 @@ use Illuminate\Support\Collection;
 use JustBetter\MagentoPrices\Jobs\RetrievePricesJob;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -31,7 +32,7 @@ class RetrievePriceByDate extends Action
 
         $from = Carbon::createFromFormat(static::DATE_FORMAT, $fields->from);
 
-        RetrievePricesJob::dispatch(null, $from);
+        RetrievePricesJob::dispatch($from, $fields->force);
 
         return Action::message('Started retrieve');
     }
@@ -39,7 +40,8 @@ class RetrievePriceByDate extends Action
     public function fields(NovaRequest $request): array
     {
         return [
-            Date::make('From date', 'from')
+            Date::make(__('From date'), 'from'),
+            Boolean::make(__('Force update'), 'force')
         ];
     }
 }
