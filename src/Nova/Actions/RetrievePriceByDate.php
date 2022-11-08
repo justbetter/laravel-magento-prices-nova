@@ -2,10 +2,9 @@
 
 namespace JustBetter\MagentoPricesNova\Nova\Actions;
 
-use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
-use Illuminate\Http\Request;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use JustBetter\MagentoPrices\Jobs\RetrievePricesJob;
 use Laravel\Nova\Actions\Action;
