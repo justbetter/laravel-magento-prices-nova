@@ -5,7 +5,7 @@ namespace JustBetter\MagentoPricesNova\Nova\Actions;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
-use JustBetter\MagentoPrices\Jobs\RetrievePricesJob;
+use JustBetter\MagentoPrices\Jobs\RetrievePriceJob;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 
@@ -21,7 +21,7 @@ class Retry extends Action
     public function handle(ActionFields $fields, Collection $models): array
     {
         foreach ($models as $model) {
-            RetrievePricesJob::dispatch($model->sku, true);
+            RetrievePriceJob::dispatch($model->sku, true);
         }
 
         return Action::message('Started');

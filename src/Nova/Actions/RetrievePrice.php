@@ -3,10 +3,9 @@
 namespace JustBetter\MagentoPricesNova\Nova\Actions;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Http\Request;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
-use JustBetter\MagentoPrices\Jobs\RetrievePricesJob;
+use JustBetter\MagentoPrices\Jobs\RetrievePriceJob;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Boolean;
@@ -21,7 +20,7 @@ class RetrievePrice extends Action
 
     public function handle(ActionFields $fields, Collection $models): array
     {
-        $models->each(fn($model) => RetrievePricesJob::dispatch($model->sku, null, $fields->force));
+        $models->each(fn($model) => RetrievePriceJob::dispatch($model->sku, $fields->force));
 
         return Action::message('Started retrieve');
     }
