@@ -19,7 +19,7 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  repository: ${{ github.action_repository }}
+                  repository: ${{ github.repository }}
 
             - name: Commit CHANGELOG
               uses: stefanzweifel/git-auto-commit-action@v4
