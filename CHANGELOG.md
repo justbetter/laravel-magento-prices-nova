@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.0.7 - 2023-01-12
+
+### What's Changed
+
+- Add changelogs by @VincentBean in https://github.com/justbetter/laravel-magento-prices-nova/pull/2
+
+**Full Changelog**: https://github.com/justbetter/laravel-magento-prices-nova/compare/4.0.6...4.0.7
+
 ## [4.0.6] - 2022-11-25
 
 - Fix actions
@@ -31,4 +39,3 @@
 ## [4.0.0] - 2022-09-20
 
 - Initial commit
-
