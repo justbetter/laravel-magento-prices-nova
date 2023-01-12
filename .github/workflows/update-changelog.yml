@@ -18,8 +18,8 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          user: justbetter
-          repo: laravel-magento-prices-nova
+          user: ${GITHUB_REPOSITORY%/*}
+          repo: ${GITHUB_REPOSITORY#*/}
 
       - name: Commit CHANGELOG
         uses: stefanzweifel/git-auto-commit-action@v4
