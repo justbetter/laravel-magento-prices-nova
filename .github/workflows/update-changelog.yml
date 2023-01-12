@@ -14,13 +14,15 @@ jobs:
         with:
           ref: ${{ github.event.release.target_commitish }}
 
-      - name: Update Changelog
-        uses: stefanzweifel/changelog-updater-action@v1
+      - name: Generate changelog
+        uses: justbetter/generate-changelogs-action@main
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          latest-version: ${{ github.event.release.tag_name }}
-          release-notes: ${{ github.event.release.body }}
+          user: justbetter
+          repo: laravel-magento-prices-nova
 
-      - name: Commit updated CHANGELOG
+      - name: Commit CHANGELOG
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ github.event.release.target_commitish }}
