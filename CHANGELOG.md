@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.1.1...main)
+[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.1.2...main)
+## [4.1.2](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.1.2) - 2023-04-05
+
+### What's Changed
+* Update metric labels by @VincentBean in https://github.com/justbetter/laravel-magento-prices-nova/pull/5
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-magento-prices-nova/compare/4.1.1...4.1.2
+
 ## [4.1.1](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.1.1) - 2023-04-05
 
 ### What's Changed
