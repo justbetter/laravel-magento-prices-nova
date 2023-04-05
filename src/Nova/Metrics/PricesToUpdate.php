@@ -13,7 +13,9 @@ class PricesToUpdate extends Value
 
     public function calculate(NovaRequest $request): ValueResult
     {
-        return $this->sum($request, MagentoPrice::class, 'update');
+        return new ValueResult(
+            MagentoPrice::query()->where('update', '=', true)->count()
+        );
     }
 
     public function uriKey(): string
