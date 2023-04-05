@@ -9,7 +9,7 @@ use Laravel\Nova\Metrics\ValueResult;
 
 class PricesToUpdate extends Value
 {
-    public $name = 'To Update';
+    public $name = 'Prices To Update';
 
     public function calculate(NovaRequest $request): ValueResult
     {
