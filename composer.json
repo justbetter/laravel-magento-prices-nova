@@ -2,6 +2,7 @@
     "name": "justbetter/laravel-magento-prices-nova",
     "description": "Nova integration for justbetter/laravel-magento-prices",
     "type": "package",
+    "license": "MIT",
     "authors": [
         {
             "name": "Vincent Boon",
