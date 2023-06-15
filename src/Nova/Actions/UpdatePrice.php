@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use JustBetter\MagentoPrices\Jobs\UpdatePriceJob;
 use Laravel\Nova\Actions\Action;
+use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Number;
@@ -20,13 +21,13 @@ class UpdatePrice extends Action
 
     public $name = 'Update to Magento';
 
-    public function handle(ActionFields $fields, Collection $models): array
+    public function handle(ActionFields $fields, Collection $models): ActionResponse
     {
         foreach ($models as $model) {
             UpdatePriceJob::dispatch($model->sku, $fields->type);
         }
 
-        return Action::message('Started retrieve');
+        return ActionResponse::message('Started retrieve');
     }
 
     public function fields(NovaRequest $request): array

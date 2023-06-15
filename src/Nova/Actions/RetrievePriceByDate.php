@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use JustBetter\MagentoPrices\Jobs\RetrievePricesJob;
 use Laravel\Nova\Actions\Action;
+use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
@@ -23,17 +24,17 @@ class RetrievePriceByDate extends Action
     public $standalone = true;
     public $name = 'Retrieve price by date';
 
-    public function handle(ActionFields $fields, Collection $models): array
+    public function handle(ActionFields $fields, Collection $models): ActionResponse
     {
         if (!Carbon::canBeCreatedFromFormat($fields->from, static::DATE_FORMAT)) {
-            return Action::danger('Invalid date');
+            return ActionResponse::danger('Invalid date');
         }
 
         $from = Carbon::createFromFormat(static::DATE_FORMAT, $fields->from);
 
         RetrievePricesJob::dispatch($from, $fields->force);
 
-        return Action::message('Started retrieve');
+        return ActionResponse::message('Started retrieve');
     }
 
     public function fields(NovaRequest $request): array

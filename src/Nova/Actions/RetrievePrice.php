@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use JustBetter\MagentoPrices\Jobs\RetrievePriceJob;
 use Laravel\Nova\Actions\Action;
+use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -18,11 +19,11 @@ class RetrievePrice extends Action
 
     public $name = 'Retrieve';
 
-    public function handle(ActionFields $fields, Collection $models): array
+    public function handle(ActionFields $fields, Collection $models): ActionResponse
     {
         $models->each(fn($model) => RetrievePriceJob::dispatch($model->sku, $fields->force));
 
-        return Action::message('Started retrieve');
+        return ActionResponse::message('Started retrieve');
     }
 
     public function fields(NovaRequest $request): array

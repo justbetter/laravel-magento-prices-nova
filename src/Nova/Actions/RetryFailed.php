@@ -5,9 +5,10 @@ namespace JustBetter\MagentoPricesNova\Nova\Actions;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
-use JustBetter\MagentoPrices\Jobs\UpdatePricesJob;
+use JustBetter\MagentoPrices\Jobs\UpdatePriceJob;
 use JustBetter\MagentoPrices\Models\MagentoPrice;
 use Laravel\Nova\Actions\Action;
+use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Number;
@@ -20,13 +21,15 @@ class RetryFailed extends Action
 
     public $name = 'Retry Failed';
 
-    public function handle(ActionFields $fields, Collection $models): array
+    public function handle(ActionFields $fields, Collection $models): ActionResponse
     {
         foreach (MagentoPrice::where('last_failed', '!=', null)->chunk($fields->chunk) as $chunk) {
-            UpdatePricesJob::dispatch($chunk->toArray(), $fields->force);
+            foreach ($chunk as $sku) {
+                UpdatePriceJob::dispatch($sku, $fields->force);
+            }
         }
 
-        return Action::message('Retrying');
+        return ActionResponse::message('Retrying');
     }
 
     public function fields(NovaRequest $request): array

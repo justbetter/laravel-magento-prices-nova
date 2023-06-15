@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use JustBetter\MagentoPrices\Jobs\RetrievePricesJob;
 use Laravel\Nova\Actions\Action;
+use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Actions\DestructiveAction;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Boolean;
@@ -22,7 +23,7 @@ class Reset extends DestructiveAction
     public $name = 'Reset prices';
     public $standalone = true;
 
-    public function handle(ActionFields $fields, Collection $models): array
+    public function handle(ActionFields $fields, Collection $models): ActionResponse
     {
         DB::table('magento_prices')
             ->where('sku', '>', 0)
@@ -32,7 +33,7 @@ class Reset extends DestructiveAction
             RetrievePricesJob::dispatch();
         }
 
-        return Action::message('Removed all prices');
+        return ActionResponse::message('Removed all prices');
     }
 
     public function fields(NovaRequest $request): array

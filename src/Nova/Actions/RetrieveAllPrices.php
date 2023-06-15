@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use JustBetter\MagentoPrices\Jobs\RetrievePricesJob;
 use Laravel\Nova\Actions\Action;
+use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Fields\ActionFields;
 
 class RetrieveAllPrices extends Action
@@ -17,11 +18,11 @@ class RetrieveAllPrices extends Action
     public $standalone = true;
     public $name = 'Retrieve All Prices';
 
-    public function handle(ActionFields $fields, Collection $models): array
+    public function handle(ActionFields $fields, Collection $models): ActionResponse
     {
         RetrievePricesJob::dispatch();
 
-        return Action::message('Started retrieving');
+        return ActionResponse::message('Started retrieving');
     }
 }
 
