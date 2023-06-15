@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.1.2...main)
+[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.1.3...main)
+## [4.1.3](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.1.3) - 2023-06-15
+
+### What's Changed
+* Add license by @VincentBean in https://github.com/justbetter/laravel-magento-prices-nova/pull/6
+* Use Nova's ActionResponse
+
+**Full Changelog**: https://github.com/justbetter/laravel-magento-prices-nova/compare/4.1.2...4.1.3
+
 ## [4.1.2](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.1.2) - 2023-04-05
 
 ### What's Changed
