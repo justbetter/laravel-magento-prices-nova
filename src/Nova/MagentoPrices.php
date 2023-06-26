@@ -6,7 +6,6 @@ use Bolechen\NovaActivitylog\Resources\Activitylog;
 use Illuminate\Http\Request;
 use JustBetter\MagentoPrices\Models\MagentoPrice;
 use JustBetter\MagentoProducts\Models\MagentoProduct;
-use JustBetter\NovaErrorLogger\Nova\Error;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\DateTime;
@@ -89,8 +88,6 @@ class MagentoPrices extends Resource
                 ->onlyOnDetail(),
 
             MorphMany::make(__('Activity'), 'activities', Activitylog::class),
-
-            MorphMany::make(__('Errors'), 'errors', Error::class),
 
         ];
     }

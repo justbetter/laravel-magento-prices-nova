@@ -18,8 +18,7 @@
     "require": {
         "php": "^8.1",
         "laravel/nova": "^4.0",
-        "justbetter/laravel-magento-prices": "^1.1",
-        "justbetter/nova-error-logger": "^4.1",
+        "justbetter/laravel-magento-prices": "^1.4",
         "bolechen/nova-activitylog": "^0.4.0"
     },
     "autoload": {
