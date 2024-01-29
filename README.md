@@ -7,7 +7,7 @@ This package is the Laravel Nova integration for `justbetter/laravel-magento-pri
 Install the package.
 
 ```shell
-composer require just-better/laravel-magento-prices-nova
+composer require justbetter/laravel-magento-prices-nova
 ```
 
 ## Versioning
