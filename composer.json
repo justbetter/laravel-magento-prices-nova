@@ -16,9 +16,9 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "laravel/nova": "^4.0",
-        "justbetter/laravel-magento-prices": "^1.4",
+        "justbetter/laravel-magento-prices": "dev-feature/refactor as 2.0",
         "bolechen/nova-activitylog": "^0.4.0"
     },
     "autoload": {

@@ -2,10 +2,9 @@
 
 namespace JustBetter\MagentoPricesNova\Nova\Actions;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
-use JustBetter\MagentoPrices\Jobs\RetrievePriceJob;
+use JustBetter\MagentoPrices\Jobs\Retrieval\RetrievePriceJob;
+use JustBetter\MagentoPrices\Models\Price;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Fields\ActionFields;
@@ -14,14 +13,14 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class RetrievePrice extends Action
 {
-    use InteractsWithQueue;
-    use Queueable;
-
-    public $name = 'Retrieve';
+    public $name = 'Retrieve selected price';
 
     public function handle(ActionFields $fields, Collection $models): ActionResponse
     {
-        $models->each(fn($model) => RetrievePriceJob::dispatch($model->sku, $fields->force));
+        /** @var bool $force */
+        $force = $fields->get('force');
+
+        $models->each(fn (Price $model) => RetrievePriceJob::dispatch($model->sku, $force));
 
         return ActionResponse::message('Started retrieve');
     }
@@ -29,7 +28,8 @@ class RetrievePrice extends Action
     public function fields(NovaRequest $request): array
     {
         return [
-            Boolean::make('Force Update', 'force')
+            Boolean::make(__('Force Update'), 'force')
+                ->help(__('Update the price to Magento, even if it has not changed'))
         ];
     }
 }

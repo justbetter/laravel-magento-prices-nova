@@ -4,7 +4,7 @@ namespace JustBetter\MagentoPricesNova\Nova;
 
 use Bolechen\NovaActivitylog\Resources\Activitylog;
 use Illuminate\Http\Request;
-use JustBetter\MagentoPrices\Models\MagentoPrice;
+use JustBetter\MagentoPrices\Models\Price;
 use JustBetter\MagentoProducts\Models\MagentoProduct;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
@@ -15,16 +15,16 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource;
 
-class MagentoPrices extends Resource
+class Prices extends Resource
 {
-    public static $model = MagentoPrice::class;
+    public static $model = Price::class;
 
     public static $title = 'sku';
 
     public static $group = 'prices';
 
     public static $search = [
-        'sku'
+        'sku',
     ];
 
     public static function label(): string
@@ -39,7 +39,7 @@ class MagentoPrices extends Resource
                 ->help(__('Disable if this product stock should not be synced'))
                 ->sortable(),
 
-            Boolean::make(__('Exists in Magento'), function (MagentoPrice $price) {
+            Boolean::make(__('Exists in Magento'), function (Price $price) {
                 $product = MagentoProduct::findBySku($price->sku);
 
                 return $product === null ? false : $product->exists_in_magento;
@@ -80,7 +80,6 @@ class MagentoPrices extends Resource
 
             DateTime::make(__('Last failed'), 'last_failed')
                 ->readonly()
-                ->help('Max allowed failures: ' . config('magento-stock.fails.count'))
                 ->sortable(),
 
             Number::make(__('Fail count'), 'fail_count')
@@ -88,7 +87,6 @@ class MagentoPrices extends Resource
                 ->onlyOnDetail(),
 
             MorphMany::make(__('Activity'), 'activities', Activitylog::class),
-
         ];
     }
 
@@ -96,12 +94,9 @@ class MagentoPrices extends Resource
     {
         return [
             Actions\RetrievePrice::make(),
-            Actions\RetrievePriceByDate::make(),
             Actions\RetrieveAllPrices::make(),
             Actions\UpdatePrice::make(),
-            Actions\Retry::make(),
             Actions\RetryFailed::make(),
-            Actions\Reset::make(),
             Actions\MissingPrices::make(),
         ];
     }

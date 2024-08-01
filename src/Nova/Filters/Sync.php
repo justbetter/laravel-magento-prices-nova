@@ -17,8 +17,8 @@ class Sync extends Filter
     public function options(NovaRequest $request): array
     {
         return [
-            'In sync' => 1,
-            'Not in sync' => 0
+            __('In sync') => 1,
+            __('Not in sync') => 0
         ];
     }
 }

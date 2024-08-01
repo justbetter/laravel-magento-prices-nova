@@ -17,8 +17,8 @@ class Status extends Filter
     public function options(NovaRequest $request): array
     {
         return [
-            'To retrieve' => 'retrieve',
-            'To update' => 'update'
+            __('To retrieve') => 'retrieve',
+            __('To update') => 'update'
         ];
     }
 }
