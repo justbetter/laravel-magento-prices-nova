@@ -6,24 +6,26 @@ use Illuminate\Database\Eloquent\Builder;
 use Laravel\Nova\Filters\Filter;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Sync extends Filter
+class Product extends Filter
 {
     public function __construct()
     {
-        $this->name = __('Price sync');
+        $this->name = __('Product exists in Magento');
     }
 
     /** @param Builder $query */
     public function apply(NovaRequest $request, $query, $value): Builder
     {
-        return $query->where('sync', '=', $value);
+        return $query->whereHas('product', function (Builder $query) use ($value): void {
+            $query->where('exists_in_magento', '=', $value);
+        });
     }
 
     public function options(NovaRequest $request): array
     {
         return [
-            (string) __('In sync') => 1,
-            (string) __('Not in sync') => 0,
+            (string) __('Exists in Magento') => 1,
+            (string) __('Not in Magento') => 0,
         ];
     }
 }
