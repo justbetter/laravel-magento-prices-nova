@@ -13,7 +13,10 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class RetrievePrice extends Action
 {
-    public $name = 'Retrieve selected price';
+    public function __construct()
+    {
+        $this->withName(__('Retrieve selected price'));
+    }
 
     public function handle(ActionFields $fields, Collection $models): ActionResponse
     {
@@ -22,14 +25,14 @@ class RetrievePrice extends Action
 
         $models->each(fn (Price $model) => RetrievePriceJob::dispatch($model->sku, $force));
 
-        return ActionResponse::message('Started retrieve');
+        return ActionResponse::message(__('Retrieving...'));
     }
 
     public function fields(NovaRequest $request): array
     {
         return [
             Boolean::make(__('Force Update'), 'force')
-                ->help(__('Update the price to Magento, even if it has not changed'))
+                ->help(__('Update the price to Magento, even if it has not changed')),
         ];
     }
 }

@@ -17,9 +17,9 @@ class PriceUpdatesPerDay extends Trend
     public function ranges(): array
     {
         return [
-            30 => '30 Days',
-            60 => '60 Days',
-            90 => '90 Days',
+            30 => __(':days days', ['days' => 30]),
+            60 => __(':days days', ['days' => 60]),
+            90 => __(':days days', ['days' => 90]),
         ];
     }
 

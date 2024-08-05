@@ -15,9 +15,9 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource;
 
-class Prices extends Resource
+class PriceResource extends Resource
 {
-    public static $model = Price::class;
+    public static string $model = Price::class;
 
     public static $title = 'sku';
 
@@ -29,7 +29,7 @@ class Prices extends Resource
 
     public static function label(): string
     {
-        return 'Prices';
+        return __('Prices');
     }
 
     public function fields(NovaRequest $request): array
@@ -39,7 +39,7 @@ class Prices extends Resource
                 ->help(__('Disable if this product stock should not be synced'))
                 ->sortable(),
 
-            Boolean::make(__('Exists in Magento'), function (Price $price) {
+            Boolean::make(__('Exists in Magento'), function (Price $price): bool {
                 $product = MagentoProduct::findBySku($price->sku);
 
                 return $product === null ? false : $product->exists_in_magento;
@@ -96,8 +96,8 @@ class Prices extends Resource
             Actions\RetrievePrice::make(),
             Actions\RetrieveAllPrices::make(),
             Actions\UpdatePrice::make(),
-            Actions\RetryFailed::make(),
-            Actions\MissingPrices::make(),
+            Actions\ResetFailures::make(),
+            Actions\ProcessProductsWithMissingPrices::make(),
         ];
     }
 
@@ -119,6 +119,7 @@ class Prices extends Resource
             Filters\Status::make(),
             Filters\Failed::make(),
             Filters\Sync::make(),
+            Filters\Product::make(),
         ];
     }
 

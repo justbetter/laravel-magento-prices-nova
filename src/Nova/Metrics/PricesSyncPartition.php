@@ -9,12 +9,16 @@ use Laravel\Nova\Metrics\PartitionResult;
 
 class PricesSyncPartition extends Partition
 {
-    public $name = 'Keep in Sync';
+    public function __construct()
+    {
+        $this->name = __('Keep in sync');
+    }
 
     public function calculate(NovaRequest $request): PartitionResult
     {
-        return $this->count($request, Price::class, 'sync')
-            ->label(fn($sync) => $sync ? 'Yes' : 'No');
+        return $this
+            ->count($request, Price::class, 'sync')
+            ->label(fn (mixed $sync): string => $sync ? __('Yes') : __('No'));
     }
 
     public function uriKey(): string

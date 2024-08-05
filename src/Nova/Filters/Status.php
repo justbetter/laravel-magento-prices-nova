@@ -8,6 +8,11 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Status extends Filter
 {
+    public function __construct()
+    {
+        $this->name = __('Price status');
+    }
+
     /** @param Builder $query */
     public function apply(NovaRequest $request, $query, $value): Builder
     {
@@ -17,8 +22,8 @@ class Status extends Filter
     public function options(NovaRequest $request): array
     {
         return [
-            __('To retrieve') => 'retrieve',
-            __('To update') => 'update'
+            (string) __('To retrieve') => 'retrieve',
+            (string) __('To update') => 'update',
         ];
     }
 }

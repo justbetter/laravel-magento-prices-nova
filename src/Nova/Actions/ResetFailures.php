@@ -10,16 +10,19 @@ use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class RetryFailed extends Action
+class ResetFailures extends Action
 {
-    public $name = 'Reset Failed Status';
+    public function __construct()
+    {
+        $this->withName(__('Reset failures'));
+    }
 
     public function handle(ActionFields $fields, Collection $models): ActionResponse
     {
         /** @var bool $retrieve */
         $retrieve = $fields->get('retrieve');
 
-         /** @var bool $update */
+        /** @var bool $update */
         $update = $fields->get('update');
 
         $models->each(fn (Price $price): bool => $price->update([
@@ -27,10 +30,10 @@ class RetryFailed extends Action
             'failed_at' => null,
             'fail_count' => 0,
             'retrieve' => $retrieve,
-            'update' => $update
+            'update' => $update,
         ]));
 
-        return ActionResponse::message(__('Reset :count prices', ['count' => $models->count()]));
+        return ActionResponse::message(__('Failures reset!'));
     }
 
     public function fields(NovaRequest $request): array
@@ -44,4 +47,3 @@ class RetryFailed extends Action
         ];
     }
 }
-

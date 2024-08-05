@@ -9,12 +9,13 @@ use Laravel\Nova\Metrics\ValueResult;
 
 class PricesToRetrieve extends Value
 {
-    public $name = 'Prices To Retrieve';
-
     public function calculate(NovaRequest $request): ValueResult
     {
         return new ValueResult(
-            Price::query()->where('retrieve', '=', true)->count()
+            Price::query()
+                ->where('sync', '=', true)
+                ->where('retrieve', '=', true)
+                ->count()
         );
     }
 

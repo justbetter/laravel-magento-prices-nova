@@ -12,12 +12,15 @@ use Laravel\Nova\Fields\ActionFields;
 
 class UpdatePrice extends Action
 {
-    public $name = 'Update to Magento';
+    public function __construct()
+    {
+        $this->withName(__('Update to Magento'));
+    }
 
     public function handle(ActionFields $fields, Collection $models): ActionResponse
     {
         $models->each(fn (Price $price): PendingDispatch => UpdatePriceJob::dispatch($price));
 
-        return ActionResponse::message(__('Updating'));
+        return ActionResponse::message(__('Updating...'));
     }
 }

@@ -18,16 +18,28 @@
     "require": {
         "php": "^8.2",
         "laravel/nova": "^4.0",
-        "justbetter/laravel-magento-prices": "dev-feature/refactor as 2.0",
+        "justbetter/laravel-magento-prices": "^2.0",
         "bolechen/nova-activitylog": "^0.4.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.16",
+        "orchestra/testbench": "^9.1",
+        "phpunit/phpunit": "^11.2",
+        "larastan/larastan": "^2.9",
+        "phpstan/phpstan-mockery": "^1.1"
     },
     "autoload": {
         "psr-4": {
             "JustBetter\\MagentoPricesNova\\": "src"
         }
     },
-    "config": {
-        "sort-packages": true
+    "scripts": {
+        "analyse": "phpstan",
+        "style": "pint --test",
+        "quality": [
+            "@analyse",
+            "@style"
+        ]
     },
     "extra": {
         "laravel": {
@@ -35,6 +47,9 @@
                 "JustBetter\\MagentoPricesNova\\ServiceProvider"
             ]
         }
+    },
+    "config": {
+        "sort-packages": true
     },
     "minimum-stability": "stable",
     "prefer-stable": true,

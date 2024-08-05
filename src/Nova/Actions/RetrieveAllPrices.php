@@ -13,8 +13,12 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class RetrieveAllPrices extends Action
 {
-    public $name = 'Retrieve All Prices';
-    public $standalone = true;
+    public function __construct()
+    {
+        $this
+            ->withName(__('Retrieve all prices'))
+            ->standalone();
+    }
 
     public function handle(ActionFields $fields, Collection $models): ActionResponse
     {
@@ -27,7 +31,7 @@ class RetrieveAllPrices extends Action
 
         RetrieveAllPricesJob::dispatch($carbon ?? null);
 
-        return ActionResponse::message(__('Retrieving'));
+        return ActionResponse::message(__('Retrieving...'));
     }
 
     public function fields(NovaRequest $request): array
@@ -38,4 +42,3 @@ class RetrieveAllPrices extends Action
         ];
     }
 }
-
