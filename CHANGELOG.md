@@ -1,6 +1,17 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.2.0...main)
+[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.3.0...main)
+## [4.3.0](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.3.0) - 2024-08-05
+
+### What's Changed
+* Update README.md composer require command by @FinnPaes in https://github.com/justbetter/laravel-magento-prices-nova/pull/7
+* Refactor by @VincentBean in https://github.com/justbetter/laravel-magento-prices-nova/pull/8
+
+### New Contributors
+* @FinnPaes made their first contribution in https://github.com/justbetter/laravel-magento-prices-nova/pull/7
+
+**Full Changelog**: https://github.com/justbetter/laravel-magento-prices-nova/compare/4.2.0...4.3.0
+
 ## [4.2.0](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.2.0) - 2023-06-26
 
 **Full Changelog**: https://github.com/justbetter/laravel-magento-prices-nova/compare/4.1.3...4.2.0
