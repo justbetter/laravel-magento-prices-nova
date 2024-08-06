@@ -32,6 +32,11 @@ class PriceResource extends Resource
         return __('Prices');
     }
 
+    public static function uriKey(): string
+    {
+        return 'magento-prices';
+    }
+
     public function fields(NovaRequest $request): array
     {
         return [
