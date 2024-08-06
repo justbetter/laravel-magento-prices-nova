@@ -1,6 +1,16 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.3.0...main)
+[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.3.1...main)
+## [4.3.1](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.3.1) - 2024-08-06
+
+### What's Changed
+* Added uriKey by @ramonrietdijk in https://github.com/justbetter/laravel-magento-prices-nova/pull/9
+
+### New Contributors
+* @ramonrietdijk made their first contribution in https://github.com/justbetter/laravel-magento-prices-nova/pull/9
+
+**Full Changelog**: https://github.com/justbetter/laravel-magento-prices-nova/compare/4.3.0...4.3.1
+
 ## [4.3.0](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.3.0) - 2024-08-05
 
 ### What's Changed
