@@ -19,6 +19,7 @@
         "php": "^8.2",
         "laravel/nova": "^4.0",
         "justbetter/laravel-magento-prices": "^2.0",
+        "justbetter/laravel-magento-async-nova": "^4.0",
         "bolechen/nova-activitylog": "^0.4.0"
     },
     "require-dev": {
