@@ -4,6 +4,7 @@ namespace JustBetter\MagentoPricesNova\Nova;
 
 use Bolechen\NovaActivitylog\Resources\Activitylog;
 use Illuminate\Http\Request;
+use JustBetter\MagentoAsyncNova\Nova\BulkOperationResource;
 use JustBetter\MagentoPrices\Models\Price;
 use JustBetter\MagentoProducts\Models\MagentoProduct;
 use Laravel\Nova\Fields\Boolean;
@@ -92,6 +93,8 @@ class PriceResource extends Resource
                 ->onlyOnDetail(),
 
             MorphMany::make(__('Activity'), 'activities', Activitylog::class),
+
+            MorphMany::make(__('Operations'), 'bulkOperations', BulkOperationResource::class),
         ];
     }
 
