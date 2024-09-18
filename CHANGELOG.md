@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.3.1...main)
+[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.3.2...main)
+## [4.3.2](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.3.2) - 2024-09-18
+
+### What's Changed
+* Add bulk operations to Nova resource by @VincentBean in https://github.com/justbetter/laravel-magento-prices-nova/pull/10
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-magento-prices-nova/compare/4.3.1...4.3.2
+
 ## [4.3.1](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.3.1) - 2024-08-06
 
 ### What's Changed
