@@ -16,18 +16,20 @@
         }
     ],
     "require": {
-        "php": "^8.2",
-        "laravel/nova": "^4.0",
-        "justbetter/laravel-magento-prices": "^2.0",
+        "php": "^8.3",
+        "bolechen/nova-activitylog": "^0.5.0",
         "justbetter/laravel-magento-async-nova": "^4.0",
-        "bolechen/nova-activitylog": "^0.4.0"
+        "justbetter/laravel-magento-prices": "^2.0",
+        "laravel/framework": "^11.0|^12.0",
+        "laravel/nova": "^5.0"
     },
     "require-dev": {
-        "laravel/pint": "^1.16",
-        "orchestra/testbench": "^9.1",
-        "phpunit/phpunit": "^11.2",
-        "larastan/larastan": "^2.9",
-        "phpstan/phpstan-mockery": "^1.1"
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.20",
+        "orchestra/testbench": "^9.0",
+        "pestphp/pest": "^3.7",
+        "phpstan/phpstan-mockery": "^2.0",
+        "phpunit/phpunit": "^11.5"
     },
     "autoload": {
         "psr-4": {
@@ -35,11 +37,11 @@
         }
     },
     "scripts": {
-        "analyse": "phpstan",
+        "analyse": "phpstan --memory-limit=256M",
         "style": "pint --test",
         "quality": [
-            "@analyse",
-            "@style"
+            "@style",
+            "@analyse"
         ]
     },
     "extra": {
@@ -50,7 +52,10 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
