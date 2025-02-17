@@ -21,6 +21,8 @@ jobs:
                     coverage: none
 
             -   name: Install dependencies
+                env:
+                    COMPOSER_AUTH: '{"http-basic":{"nova.laravel.com":{"username":"${{secrets.NOVA_USERNAME}}","password":"${{secrets.NOVA_PASSWORD}}"}}}'
                 run: composer install
 
             -   name: Style
