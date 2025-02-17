@@ -2,6 +2,7 @@
 
 namespace JustBetter\MagentoPricesNova\Nova\Filters;
 
+use Illuminate\Contracts\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Nova\Filters\Filter;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -14,7 +15,7 @@ class Failed extends Filter
     }
 
     /** @param  Builder  $query */
-    public function apply(NovaRequest $request, $query, $value): Builder
+    public function apply(NovaRequest $request, EloquentBuilder $query, mixed $value): Builder|EloquentBuilder
     {
         return match ($value) {
             'day' => $query->whereDate('last_failed', '>=', now()->startOfDay()),
