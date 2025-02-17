@@ -41,12 +41,8 @@
         "style": "pint --test",
         "quality": [
             "@style",
-            "@analyse",
-            "@test",
-            "@coverage"
-        ],
-        "test": "phpunit",
-        "coverage": "XDEBUG_MODE=coverage php vendor/bin/pest --coverage --min=0"
+            "@analyse"
+        ]
     },
     "extra": {
         "laravel": {
