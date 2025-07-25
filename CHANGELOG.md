@@ -1,6 +1,15 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.4.0...main)
+[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.4.1...main)
+## [4.4.1](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.4.1) - 2025-07-25
+
+### What's Changed
+* Adjust workflows by @VincentBean in https://github.com/justbetter/laravel-magento-prices-nova/pull/12
+* Add defer option by @ramonrietdijk in https://github.com/justbetter/laravel-magento-prices-nova/pull/13
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-magento-prices-nova/compare/4.4.0...4.4.1
+
 ## [4.4.0](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.4.0) - 2025-02-17
 
 ### What's Changed
