@@ -8,6 +8,7 @@ use JustBetter\MagentoPrices\Jobs\Retrieval\RetrieveAllPricesJob;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Fields\ActionFields;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -29,7 +30,10 @@ class RetrieveAllPrices extends Action
             $carbon = Carbon::parse($from);
         }
 
-        RetrieveAllPricesJob::dispatch($carbon ?? null);
+        /** @var bool $defer */
+        $defer = $fields->get('defer');
+
+        RetrieveAllPricesJob::dispatch($carbon ?? null, $defer);
 
         return ActionResponse::message(__('Retrieving...'));
     }
@@ -39,6 +43,10 @@ class RetrieveAllPrices extends Action
         return [
             DateTime::make(__('From'), 'from')
                 ->help(__('Optional, retrieve updated prices from this date')),
+
+            Boolean::make(__('Defer'), 'defer')
+                ->default(true)
+                ->help(__('When enabled, the prices will be marked for retrieval. Otherwise, all prices will be retrieved immediately.')),
         ];
     }
 }
