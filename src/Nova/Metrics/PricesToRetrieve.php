@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\MagentoPricesNova\Nova\Metrics;
 
 use JustBetter\MagentoPrices\Models\Price;
@@ -19,6 +21,7 @@ class PricesToRetrieve extends Value
         );
     }
 
+    #[\Override]
     public function uriKey(): string
     {
         return 'prices-to-retrieve';

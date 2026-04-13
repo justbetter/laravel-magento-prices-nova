@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\MagentoPricesNova\Nova\Metrics;
 
 use JustBetter\MagentoPrices\Models\Price;
@@ -14,6 +16,7 @@ class PriceUpdatesPerDay extends Trend
         return $this->countByDays($request, Price::class, 'last_updated');
     }
 
+    #[\Override]
     public function ranges(): array
     {
         return [
@@ -23,6 +26,7 @@ class PriceUpdatesPerDay extends Trend
         ];
     }
 
+    #[\Override]
     public function uriKey(): string
     {
         return 'price-updates-per-day';

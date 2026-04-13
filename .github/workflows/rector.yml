@@ -1,10 +1,10 @@
-name: style
+name: rector
 
 on: ['push', 'pull_request']
 
 jobs:
-    style:
-        name: Style
+    rector:
+        name: Rector
         runs-on: ubuntu-latest
 
         steps:
@@ -23,5 +23,5 @@ jobs:
                 COMPOSER_AUTH: '{"http-basic":{"nova.laravel.com":{"username":"${{secrets.NOVA_USERNAME}}","password":"${{secrets.NOVA_PASSWORD}}"}}}'
               run: composer install
 
-            - name: Style
-              run: composer style
+            - name: Rector
+              run: composer rector

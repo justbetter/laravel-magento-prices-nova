@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\MagentoPricesNova\Nova\Actions;
 
 use Illuminate\Support\Collection;
@@ -28,6 +30,7 @@ class RetrievePrice extends Action
         return ActionResponse::message(__('Retrieving...'));
     }
 
+    #[\Override]
     public function fields(NovaRequest $request): array
     {
         return [
