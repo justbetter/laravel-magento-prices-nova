@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.4.1...main)
+[Unreleased changes](https://github.com/justbetter/laravel-magento-prices-nova/compare/4.5.0...main)
+## [4.5.0](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.5.0) - 2026-04-13
+
+### What's Changed
+* Laravel 13 support by @VincentBean in https://github.com/justbetter/laravel-magento-prices-nova/pull/14
+
+
+**Full Changelog**: https://github.com/justbetter/laravel-magento-prices-nova/compare/4.4.1...4.5.0
+
 ## [4.4.1](https://github.com/justbetter/laravel-magento-prices-nova/releases/tag/4.4.1) - 2025-07-25
 
 ### What's Changed
