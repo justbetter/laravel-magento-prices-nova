@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\MagentoPricesNova\Nova\Metrics;
 
 use JustBetter\MagentoPrices\Models\Price;
@@ -18,9 +20,10 @@ class PricesSyncPartition extends Partition
     {
         return $this
             ->count($request, Price::class, 'sync')
-            ->label(fn (mixed $sync): string => $sync ? __('Yes') : __('No'));
+            ->label(fn (mixed $sync): string => $sync !== '' && $sync !== '0' ? __('Yes') : __('No'));
     }
 
+    #[\Override]
     public function uriKey(): string
     {
         return 'prices-sync-partition';

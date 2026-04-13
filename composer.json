@@ -29,7 +29,8 @@
         "orchestra/testbench": "^10.11|^11.0",
         "pestphp/pest": "^4.0",
         "phpstan/phpstan-mockery": "^2.0",
-        "phpunit/phpunit": "^12.5"
+        "phpunit/phpunit": "^12.5",
+        "rector/rector": "^2.4"
     },
     "autoload": {
         "psr-4": {
@@ -39,9 +40,11 @@
     "scripts": {
         "analyse": "phpstan --memory-limit=256M",
         "style": "pint --test",
+        "rector": "rector process --dry-run",
         "quality": [
             "@style",
-            "@analyse"
+            "@analyse",
+            "@rector"
         ]
     },
     "extra": {

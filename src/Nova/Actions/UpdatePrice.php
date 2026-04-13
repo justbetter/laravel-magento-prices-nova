@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\MagentoPricesNova\Nova\Actions;
 
 use Illuminate\Foundation\Bus\PendingDispatch;

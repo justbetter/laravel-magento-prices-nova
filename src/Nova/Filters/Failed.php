@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\MagentoPricesNova\Nova\Filters;
 
 use Illuminate\Contracts\Database\Eloquent\Builder as EloquentBuilder;
@@ -24,6 +26,7 @@ class Failed extends Filter
         };
     }
 
+    #[\Override]
     public function options(NovaRequest $request): array
     {
         return [

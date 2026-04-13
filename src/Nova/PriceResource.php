@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\MagentoPricesNova\Nova;
 
 use Bolechen\NovaActivitylog\Resources\Activitylog;
@@ -28,11 +30,13 @@ class PriceResource extends Resource
         'sku',
     ];
 
+    #[\Override]
     public static function label(): string
     {
         return __('Prices');
     }
 
+    #[\Override]
     public static function uriKey(): string
     {
         return 'magento-prices';
@@ -48,7 +52,7 @@ class PriceResource extends Resource
             Boolean::make(__('Exists in Magento'), function (Price $price): bool {
                 $product = MagentoProduct::findBySku($price->sku);
 
-                return $product === null ? false : $product->exists_in_magento;
+                return $product instanceof MagentoProduct && $product->exists_in_magento;
             })
                 ->showOnIndex(false),
 
@@ -98,6 +102,7 @@ class PriceResource extends Resource
         ];
     }
 
+    #[\Override]
     public function actions(NovaRequest $request): array
     {
         return [
@@ -109,6 +114,7 @@ class PriceResource extends Resource
         ];
     }
 
+    #[\Override]
     public function cards(NovaRequest $request): array
     {
         return [
@@ -121,6 +127,7 @@ class PriceResource extends Resource
         ];
     }
 
+    #[\Override]
     public function filters(NovaRequest $request): array
     {
         return [
@@ -131,11 +138,13 @@ class PriceResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function authorizedToCreate(Request $request): bool
     {
         return false;
     }
 
+    #[\Override]
     public function authorizedToReplicate(Request $request): bool
     {
         return false;

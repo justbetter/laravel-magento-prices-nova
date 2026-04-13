@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JustBetter\MagentoPricesNova\Nova\Metrics;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -23,6 +25,7 @@ class PricesToUpdate extends Value
         );
     }
 
+    #[\Override]
     public function uriKey(): string
     {
         return 'prices-to-update';
